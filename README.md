@@ -1,1 +1,1 @@
-# Let's Code - Git Repo 3
+# Let's Code - Project 2
