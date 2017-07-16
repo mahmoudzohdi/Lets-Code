@@ -1,0 +1,14 @@
+input, textarea{
+    padding: 10px;
+    &:focus{
+        outline: none;
+    }
+}
+button{
+    border: none;
+    padding: 0;
+    background: none;
+    &:focus{
+        outline: none;
+    }
+}

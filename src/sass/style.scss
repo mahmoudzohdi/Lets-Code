@@ -1,5 +1,14 @@
-body{
-    color: red;
-    display: flex;
-    font-size: 50;
-}
+// import vendors
+@import './vendors/bootstrap.min';
+@import './vendors/font-awesome';
+
+// import our main style files
+@import './partials/_fonts';
+@import './partials/_colors';
+@import './partials/_img-ratio';
+@import './partials/_buttons';
+
+// import our components style files
+@import './partials/_global';
+@import './partials/_header';
+@import './partials/_forms';

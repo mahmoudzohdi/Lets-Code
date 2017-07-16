@@ -1,0 +1,27 @@
+.image-ratio{
+    position: relative;
+    overflow: hidden;
+    .ratio{
+        padding-top: 100%;
+        &.half-square{
+            padding-top: 50%;
+        }
+        &.cart-item{
+            padding-top: 120%;
+        }
+    }
+    .ratio-inner{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        width: 100%;
+        height: 100%;
+        img{
+            width: 100%;
+            min-height: 100%;
+        }
+    }
+}

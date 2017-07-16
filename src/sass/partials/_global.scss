@@ -1,0 +1,51 @@
+body{
+    font-family: $mainFont;
+}
+a{
+    &, &:hover, &:focus{
+        text-decoration: none;
+        color: inherit;
+    }
+}
+
+ul, ol, li{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.paragraph{
+    font-size: 13px;
+    margin-top: 0;
+}
+
+
+// text align
+.text-center{
+    text-align: center;
+}
+
+// table classes
+.act-table{
+    display: table;
+}
+.act-table-cell{
+    display: table-cell;
+}
+
+
+// vertical-align classes
+.vertical-center{
+    vertical-align: middle;
+}
+.vertical-top{
+    vertical-align: top;
+}
+
+// spaces
+.no-margin{
+    margin: 0;
+}
+.no-padding{
+    padding: 0;
+}

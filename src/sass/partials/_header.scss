@@ -1,0 +1,251 @@
+header{
+    padding: 20px 0;
+    color: $textGray;
+    font-size: 12px;
+    position: relative;
+    .logo{
+        display: inline-block;
+        width: 100px;
+        vertical-align: middle;
+        margin-right: 20px;
+    }
+    .list-holder{
+        position: relative;
+        display: inline-block;
+        .selected-item{
+            .item-text{
+                display: inline-block;
+                vertical-align: top;
+            }
+            .icon{
+                display: inline-block;
+                vertical-align: top;
+                margin-left: 10px;
+            }
+        }
+        .list{
+            position: absolute;
+            top: 100%;
+            left: 0;
+
+            min-width: 100%;
+            padding: 5px 0px;
+            border-radius: 3px;
+            border: 1px solid #eee;
+
+            background-color: #f8f8f8;
+            box-shadow: 0 0 5px 0 rgba(0,0,0,0.1);
+
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s;
+            .list-item{
+                a{
+                    display: block;
+                    padding: 2px 8px 1px;
+                    &:hover{
+                        background-color: #ccc;
+                        color: #fff;
+                    }
+                }
+                &.active{
+                    a{
+                        background-color: #ccc;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+        &.currency-dropdown, &.lang-dropdown{
+            margin-right: 20px;
+        }
+        &:hover{
+            .list{
+                opacity: 1;
+                visibility: visible;
+                
+            }
+        }
+    }
+    .right-side{
+        margin-top: 15px;
+    }
+    .search{
+        position: absolute;
+        top: 20px;
+        left: 50%;
+
+        width: 500px;
+        margin-left: -250px;
+
+        display: inline-block;
+        input{
+            width: 100%;
+            border: 1px solid #ccc;
+            height: 45px;
+            line-height: 25px;
+            padding-right: 35px;
+        }
+        .submit-btn{
+            position: absolute;
+            top: 13px;
+            right: 13px;
+            font-size: 15px;
+            color: $textBlack;
+        }
+
+    }
+    .signin-btn{
+        display: inline-block;
+        font-size: 13px;
+    }
+    .cart{
+        display: inline-block;
+        position: relative;
+        padding-bottom: 10px;
+        .cart-icon{
+            font-size: 18px;
+            color: #6a6a6a;
+            margin-left: 20px;
+            position: relative;
+            .cart-count{
+                position: absolute;
+                top: -2px;
+                right: -10px;
+                color: $yellow;
+                font-size: 12px;
+                font-weight: 600;
+                line-height: 1;
+            }
+        }
+        .cart-content{
+            position: absolute;
+            top: 100%;
+            right: -30px;
+
+            padding: 10px;
+            display: none;
+        
+            width: 270px;
+            background-color: #fff;
+            border: 1px solid #eee;
+
+            &:after{
+                content: '';
+                display: block;
+                position: absolute;
+                bottom: 100%;
+                right: 25px;
+
+                border-bottom: 10px solid #fff;
+                border-right: 10px solid transparent;
+                border-left: 10px solid transparent;
+            }
+            &:before{
+                content: '';
+                display: block;
+                position: absolute;
+                bottom: 100%;
+                right: 25px;
+
+                margin-bottom: 1px;
+
+                border-bottom: 10px solid #eee;
+                border-right: 10px solid transparent;
+                border-left: 10px solid transparent;
+            }
+
+
+            .cart-items{
+                .items-list{
+                    .item{
+                        width: 100%;
+                        padding-bottom: 20px;
+                        margin-bottom: 20px;
+                        border-bottom: 1px solid #eee;
+                        &:last-child{
+                            margin-bottom: 0;
+                        }
+                        .item-img-cell{
+                            width: 78px;
+                        }
+                        .item-content-cell{
+                            padding-left: 10px;
+                            padding-top: 10px;
+                            position: relative;
+                        }
+                        .item-title{
+                            font-size: 13px;
+                            font-weight: 400;
+                            color: $textGray;
+                            margin-top: 0;
+                            margin-bottom: 10px;
+                            &:hover{
+                                color: $textBlack;
+                            }
+                        }
+                        .paragraph{
+                            color: $textBlack;
+                        }
+                        .x{
+                            margin: 0 5px;
+                        }
+                        .close-btn{
+                            position: absolute;
+                            top: 5px;
+                            right: 0;
+                            font-size: 12px;
+                            &:hover{
+                                color: $textBlack;
+                            }
+                            .icon{
+                                font-size: inherit;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .cart-fotter{
+                padding-top: 10px;
+                .cart-total{
+                    font-size: 16px;
+                    font-weight: 700;
+                    text-align: center;
+                    margin-bottom: 10px;
+                }
+                .action{
+                    &:first-child{
+                        padding-right: 5px;
+                    }
+                    .btn{
+                        width: 100%;
+                    }
+                }
+            }
+
+        }
+
+        .no-content{
+            margin-bottom: 0;
+        }
+
+        &:hover{
+            .cart-content{
+                display: block;
+            }
+        }
+    }
+    .other-links{
+        .icon{
+            font-size: 18px;
+            color: $textBlack;
+            margin-left: 20px;
+        }
+        .list{
+            width: 100px;
+            left: auto;
+            right: -10px;
+        }
+    }
+}

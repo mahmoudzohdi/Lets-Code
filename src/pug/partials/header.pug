@@ -1,0 +1,79 @@
+header
+    .container
+        .logo.image-ratio
+            .ratio.half-square
+            .ratio-inner
+                img(src="assets/images/logo.png" alt="Logo" draggable="false")
+
+        .list-holder.dropdown-select.currency-dropdown
+            label.selected-item
+                span.item-text
+                span.icon.fa.fa-sort-down
+            ul.list
+                each val in ['USD', 'EUR', 'GBP']
+                    li.list-item
+                        a(href="#")= val
+        
+        .list-holder.dropdown-select.lang-dropdown
+            label.selected-item
+                span.item-text
+                span.icon.fa.fa-sort-down
+            ul.list
+                each val in ['ENG', 'ARB', 'FRANCH']
+                    li.list-item
+                        a(href="#")= val
+        
+        .search
+            form.search-form
+                input(type="text" placeholder="SEARCH")
+                button(type="submit").submit-btn
+                    span.icon.fa.fa-search
+
+        .right-side.pull-right    
+            a(href="#").signin-btn SIGN IN
+
+            .cart
+                a(href="#").cart-icon
+                    span.cart-count 0
+                    span.fa.fa-shopping-cart
+                .cart-content
+                    //- p.paragraph.no-content.text-center
+                    //-     |You have no items in your shopping cart.
+                    .cart-items
+                        ul.items-list
+                            -for(var i = 1; i <= 2; i++)
+                                li.item.act-table
+                                    .item-img-cell.image-ratio.act-table-cell.vertical-top
+                                        .ratio
+                                        a(href="#").ratio-inner.cart-item
+                                            img.item-img(src="assets/images/cart/img-1.jpg" alt="item" draggable="false")
+                                        
+                                    .item-content-cell.act-table-cell.vertical-top
+                                        h4.item-title
+                                            a(href="#") BASKET
+                                        p.paragraph
+                                            span.item-count 1
+                                            span.x x
+                                            span.item-price $10.00
+                                        button(type="button").close-btn
+                                            span.icon.fa.fa-times
+                    .cart-fotter
+                        p.paragraph.cart-total
+                            |TOTAL : 
+                            span.black $60.00
+                        .cart-actions
+                            .row.no-margin
+                                .action.col-xs-6.no-padding
+                                    a(href="#").btn
+                                        |View Cart
+                                .action.col-xs-6.no-padding
+                                    a(href="#").btn
+                                        |Checkout
+
+
+            .list-holder.other-links
+                span.icon.fa.fa-bars
+                ul.list
+                    each val in ['Daily deal', 'Blog']
+                        li.list-item
+                            a(href="#")= val

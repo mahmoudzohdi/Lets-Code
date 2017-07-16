@@ -1,9 +1,94 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags-->
     <title>Let's Code 50</title>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries-->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file://--><!--[if lt IE 9]><!-->
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><!--[endif]-->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Poppins:300italic,400italic,500italic,600italic,700italic,800italic,700,300,600,800,400,500&amp;subset=cyrillic-ext,greek-ext,latin,latin-ext,cyrillic,greek,vietnamese">
+    <link rel="stylesheet" href="assets/css/style.css">
   </head>
-  <body>welcome from index
-    <h1>hello</h1>
+  <body>
+    <header>
+      <div class="container">
+        <div class="logo image-ratio">
+          <div class="ratio half-square"></div>
+          <div class="ratio-inner"><img src="assets/images/logo.png" alt="Logo" draggable="false"></div>
+        </div>
+        <div class="list-holder dropdown-select currency-dropdown">
+          <label class="selected-item"><span class="item-text"></span><span class="icon fa fa-sort-down"></span></label>
+          <ul class="list">
+            <li class="list-item"><a href="#">USD</a></li>
+            <li class="list-item"><a href="#">EUR</a></li>
+            <li class="list-item"><a href="#">GBP</a></li>
+          </ul>
+        </div>
+        <div class="list-holder dropdown-select lang-dropdown">
+          <label class="selected-item"><span class="item-text"></span><span class="icon fa fa-sort-down"></span></label>
+          <ul class="list">
+            <li class="list-item"><a href="#">ENG</a></li>
+            <li class="list-item"><a href="#">ARB</a></li>
+            <li class="list-item"><a href="#">FRANCH</a></li>
+          </ul>
+        </div>
+        <div class="search">
+          <form class="search-form">
+            <input type="text" placeholder="SEARCH">
+            <button class="submit-btn" type="submit"><span class="icon fa fa-search"></span></button>
+          </form>
+        </div>
+        <div class="right-side pull-right">   <a class="signin-btn" href="#">SIGN IN</a>
+          <div class="cart"><a class="cart-icon" href="#"><span class="cart-count">0</span><span class="fa fa-shopping-cart"></span></a>
+            <div class="cart-content">
+              <div class="cart-items">
+                <ul class="items-list">
+                  <li class="item act-table">
+                    <div class="item-img-cell image-ratio act-table-cell vertical-top">
+                      <div class="ratio"></div><a class="ratio-inner cart-item" href="#"><img class="item-img" src="assets/images/cart/img-1.jpg" alt="item" draggable="false"></a>
+                    </div>
+                    <div class="item-content-cell act-table-cell vertical-top">
+                      <h4 class="item-title"><a href="#">BASKET</a></h4>
+                      <p class="paragraph"><span class="item-count">1</span><span class="x">x</span><span class="item-price">$10.00</span></p>
+                      <button class="close-btn" type="button"><span class="icon fa fa-times"></span></button>
+                    </div>
+                  </li>
+                  <li class="item act-table">
+                    <div class="item-img-cell image-ratio act-table-cell vertical-top">
+                      <div class="ratio"></div><a class="ratio-inner cart-item" href="#"><img class="item-img" src="assets/images/cart/img-1.jpg" alt="item" draggable="false"></a>
+                    </div>
+                    <div class="item-content-cell act-table-cell vertical-top">
+                      <h4 class="item-title"><a href="#">BASKET</a></h4>
+                      <p class="paragraph"><span class="item-count">1</span><span class="x">x</span><span class="item-price">$10.00</span></p>
+                      <button class="close-btn" type="button"><span class="icon fa fa-times"></span></button>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="cart-fotter">
+                <p class="paragraph cart-total">TOTAL : <span class="black">$60.00</span></p>
+                <div class="cart-actions">
+                  <div class="row no-margin">
+                    <div class="action col-xs-6 no-padding"><a class="btn" href="#">View Cart</a></div>
+                    <div class="action col-xs-6 no-padding"><a class="btn" href="#">Checkout</a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="list-holder other-links"><span class="icon fa fa-bars"></span>
+            <ul class="list">
+              <li class="list-item"><a href="#">Daily deal</a></li>
+              <li class="list-item"><a href="#">Blog</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+    <script src="assets/js/scripts.js"></script>
   </body>
 </html>

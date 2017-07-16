@@ -1,0 +1,11 @@
+.btn{
+    background-color: $yellow;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    display: inline-block;
+    &:hover, &:focus{
+        opacity: 0.9;
+        color: #fff;
+    }
+}
