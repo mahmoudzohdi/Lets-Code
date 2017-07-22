@@ -11,6 +11,7 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><!--[endif]-->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Poppins:300italic,400italic,500italic,600italic,700italic,800italic,700,300,600,800,400,500&amp;subset=cyrillic-ext,greek-ext,latin,latin-ext,cyrillic,greek,vietnamese">
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400,500" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
   </head>
   <body>
@@ -20,27 +21,31 @@
           <div class="ratio half-square"></div>
           <div class="ratio-inner"><img src="assets/images/logo.png" alt="Logo" draggable="false"></div>
         </div>
-        <div class="list-holder dropdown-select currency-dropdown">
-          <label class="selected-item"><span class="item-text"></span><span class="icon fa fa-sort-down"></span></label>
-          <ul class="list">
-            <li class="list-item"><a href="#">USD</a></li>
-            <li class="list-item"><a href="#">EUR</a></li>
-            <li class="list-item"><a href="#">GBP</a></li>
-          </ul>
-        </div>
-        <div class="list-holder dropdown-select lang-dropdown">
-          <label class="selected-item"><span class="item-text"></span><span class="icon fa fa-sort-down"></span></label>
-          <ul class="list">
-            <li class="list-item"><a href="#">ENG</a></li>
-            <li class="list-item"><a href="#">ARB</a></li>
-            <li class="list-item"><a href="#">FRANCH</a></li>
-          </ul>
-        </div>
-        <div class="search">
-          <form class="search-form">
-            <input type="text" placeholder="SEARCH">
-            <button class="submit-btn" type="submit"><span class="icon fa fa-search"></span></button>
-          </form>
+        <div class="mobile-view">
+          <div class="list-holder dropdown-select currency-dropdown">
+            <label class="selected-item"><span class="item-text"></span><span class="icon fa fa-sort-down"></span></label>
+            <ul class="list">
+              <li class="list-item"><a href="#">USD</a></li>
+              <li class="list-item"><a href="#">EUR</a></li>
+              <li class="list-item"><a href="#">GBP</a></li>
+            </ul>
+          </div>
+          <div class="list-holder dropdown-select lang-dropdown">
+            <label class="selected-item"><span class="item-text"></span><span class="icon fa fa-sort-down"></span></label>
+            <ul class="list">
+              <li class="list-item"><a href="#">ENG</a></li>
+              <li class="list-item"><a href="#">ARB</a></li>
+              <li class="list-item"><a href="#">FRANCH</a></li>
+            </ul>
+          </div>
+          <div class="dropdown-menu dropdown-links click-outside">
+            <button class="menu-btn toggle-active-parent" type="button"><span class="btn-text">LINKS</span><span class="icon fa fa-sort-down"></span></button>
+            <ul class="list">
+              <li class="list-item"><a href="#">Sign in</a></li>
+              <li class="list-item"><a href="#">Daily deal</a></li>
+              <li class="list-item"><a href="#">Blog</a></li>
+            </ul>
+          </div>
         </div>
         <div class="right-side pull-right">   <a class="signin-btn" href="#">SIGN IN</a>
           <div class="cart"><a class="cart-icon" href="#"><span class="cart-count">0</span><span class="fa fa-shopping-cart"></span></a>
@@ -86,6 +91,13 @@
               <li class="list-item"><a href="#">Blog</a></li>
             </ul>
           </div>
+        </div>
+        <div class="search click-outside">
+          <button class="toggle-search toggle-active-parent" type="button"><span class="icon fa fa-search"></span></button>
+          <form class="search-form">
+            <input type="text" placeholder="SEARCH">
+            <button class="submit-btn" type="submit"><span class="icon fa fa-search"></span></button>
+          </form>
         </div>
       </div>
     </header>

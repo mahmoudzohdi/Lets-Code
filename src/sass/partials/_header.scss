@@ -3,6 +3,9 @@ header{
     color: $textGray;
     font-size: 12px;
     position: relative;
+    @media(max-width: 991px){
+        padding-top: 50px;
+    }
     .logo{
         display: inline-block;
         width: 100px;
@@ -76,7 +79,7 @@ header{
         left: 50%;
 
         width: 500px;
-        margin-left: -250px;
+        margin-left: -220px;
 
         display: inline-block;
         input{
@@ -92,6 +95,75 @@ header{
             right: 13px;
             font-size: 15px;
             color: $textBlack;
+        }
+        .toggle-search{
+            display: none;
+        }
+        @media(max-width: 1199px){
+            width: 350px;
+            margin-left: -135px;
+        }
+        @media(max-width: 991px){
+            position: relative;
+            top: auto;
+            left: auto;
+            
+            width: auto;
+            margin-left: 0;
+            float: right;
+            .search-form{
+                display: none;
+
+                position: absolute;
+                top: 100%;
+                right: 0;
+
+                width: 250px;
+                margin-top: 10px;
+                &:before{
+                    content: '';
+                    display: block;
+                    border-bottom: 10px solid #ccc;
+                    border-right: 10px solid transparent;
+                    border-left: 10px solid transparent;
+                    position: absolute;
+                    bottom: 100%;
+                    right: 10px;
+                }
+                &:after{
+                    content: '';
+                    display: block;
+                    border-bottom: 10px solid #fff;
+                    border-right: 10px solid transparent;
+                    border-left: 10px solid transparent;
+                    position: absolute;
+                    bottom: 100%;
+                    right: 10px;
+                    margin-bottom: -1px;
+                }
+            }
+            .toggle-search{
+                display: block;
+                font-size: 14px;
+                margin-right: 15px;
+                margin-top: 18px;
+            }
+            &.active{
+                .search-form{
+                    display: block;
+                }
+            }
+        }
+        @media(max-width: 400px){
+            .search-form{
+                right: 50%;
+                width: 220px;
+                margin-right: -110px;
+                &:after, &:before{
+                    right: 50%;
+                    margin-right: -4px;
+                }
+            }
         }
 
     }
@@ -210,7 +282,8 @@ header{
                 padding-top: 10px;
                 .cart-total{
                     font-size: 16px;
-                    font-weight: 700;
+                    font-family: $secondFont;
+                    font-weight: 500;
                     text-align: center;
                     margin-bottom: 10px;
                 }
@@ -235,6 +308,15 @@ header{
                 display: block;
             }
         }
+        @media(max-width: 991px){
+            margin-right: 10px;
+            .cart-content{
+                right: -10px;
+                &:after, &:before{
+                    right: 5px;
+                }
+            }
+        }
     }
     .other-links{
         .icon{
@@ -246,6 +328,94 @@ header{
             width: 100px;
             left: auto;
             right: -10px;
+        }
+        @media(max-width: 991px){
+            display: none;
+        }
+    }
+    .mobile-view{
+        display: inline-block;
+        .dropdown-links{
+            display: none;
+            float: right;
+            .menu-btn{
+                display: none;
+            }
+            .list{
+                .list-item{
+                    display: inline-block;
+                    margin-left: 10px;
+                }
+            }
+        }
+        @media(max-width: 991px){
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            
+            height: 35px;
+            padding: 9px 15px;
+            
+            background-color: $darkBlue;
+            .dropdown-links{
+                display: block;
+            }
+        }
+        @media(max-width: 500px){
+            .dropdown-links{
+                position: relative;
+                .menu-btn{
+                    display: block;
+                    .btn-text{
+                        margin-right: 5px;
+                        display: inline-block;
+                        vertical-align: text-bottom;
+                    }
+                }
+                .list{
+                    display: none;
+                }
+                &.active{
+                    .list{
+                        display: block;
+                    
+                        position: absolute;
+                        top: 100%;
+                        right: 0;
+                        z-index: 10;
+
+                        width: 100px;
+                        padding: 5px 0px;
+                        border-radius: 3px;
+                        border: 1px solid #eee;
+
+                        background-color: #f8f8f8;
+                        box-shadow: 0 0 5px 0 rgba(0,0,0,0.1);
+
+                        transition: opacity 0.5s;
+                        .list-item{
+                            display: block;
+                            margin-left: 0;
+                            a{
+                                display: block;
+                                padding: 2px 8px 1px;
+                                &:hover{
+                                    background-color: #ccc;
+                                    color: #fff;
+                                }
+                            }
+                            &.active{
+                                a{
+                                    background-color: #ccc;
+                                    color: #fff;
+                                }
+                            }
+                        }
+                    
+                    }
+                }
+            }
         }
     }
 }

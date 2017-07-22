@@ -4,30 +4,32 @@ header
             .ratio.half-square
             .ratio-inner
                 img(src="assets/images/logo.png" alt="Logo" draggable="false")
-
-        .list-holder.dropdown-select.currency-dropdown
-            label.selected-item
-                span.item-text
-                span.icon.fa.fa-sort-down
-            ul.list
-                each val in ['USD', 'EUR', 'GBP']
-                    li.list-item
-                        a(href="#")= val
-        
-        .list-holder.dropdown-select.lang-dropdown
-            label.selected-item
-                span.item-text
-                span.icon.fa.fa-sort-down
-            ul.list
-                each val in ['ENG', 'ARB', 'FRANCH']
-                    li.list-item
-                        a(href="#")= val
-        
-        .search
-            form.search-form
-                input(type="text" placeholder="SEARCH")
-                button(type="submit").submit-btn
-                    span.icon.fa.fa-search
+        .mobile-view
+            .list-holder.dropdown-select.currency-dropdown
+                label.selected-item
+                    span.item-text
+                    span.icon.fa.fa-sort-down
+                ul.list
+                    each val in ['USD', 'EUR', 'GBP']
+                        li.list-item
+                            a(href="#")= val
+            
+            .list-holder.dropdown-select.lang-dropdown
+                label.selected-item
+                    span.item-text
+                    span.icon.fa.fa-sort-down
+                ul.list
+                    each val in ['ENG', 'ARB', 'FRANCH']
+                        li.list-item
+                            a(href="#")= val
+            .dropdown-menu.dropdown-links.click-outside
+                button(type="button").menu-btn.toggle-active-parent
+                    span.btn-text LINKS
+                    span.icon.fa.fa-sort-down
+                ul.list
+                    each val in ['Sign in','Daily deal', 'Blog']
+                        li.list-item
+                            a(href="#")= val
 
         .right-side.pull-right    
             a(href="#").signin-btn SIGN IN
@@ -77,3 +79,12 @@ header
                     each val in ['Daily deal', 'Blog']
                         li.list-item
                             a(href="#")= val
+
+        
+        .search.click-outside
+            button.toggle-search.toggle-active-parent(type="button")
+                span.icon.fa.fa-search
+            form.search-form
+                input(type="text" placeholder="SEARCH")
+                button(type="submit").submit-btn
+                    span.icon.fa.fa-search
