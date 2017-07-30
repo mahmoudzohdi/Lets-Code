@@ -1,5 +1,17 @@
+html{
+    height: 100%;
+}
 body{
+    min-height: 100%;
+    overflow-y: scroll;
     font-family: $mainFont;
+    transition: transform 0.4s;
+    @media(max-width: 991px){
+        &.sidebar-oppend{
+            transform: translateX(250px);
+            overflow-y: hidden;
+        }
+    }
 }
 a{
     &, &:hover, &:focus{
@@ -48,4 +60,28 @@ ul, ol, li{
 }
 .no-padding{
     padding: 0;
+}
+
+.list-style{
+    .ls-item{
+        margin-bottom: 15px;
+        &:last-child{
+            margin-bottom: 0;
+        }
+        &:before{
+            content: '';
+            display: inline-block;
+            vertical-align: middle;
+            border-left: 5px solid $textGray;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            margin-right: 6px;
+            opacity: 0.5;
+        }
+        &:hover{
+            &:before{
+                opacity: 1;
+            }
+        }
+    }
 }

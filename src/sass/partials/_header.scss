@@ -1,6 +1,6 @@
 header{
     padding: 20px 0;
-    color: $textGray;
+    color: $textGrayLight;
     font-size: 12px;
     position: relative;
     @media(max-width: 991px){
@@ -30,6 +30,7 @@ header{
             position: absolute;
             top: 100%;
             left: 0;
+            z-index: 2;
 
             min-width: 100%;
             padding: 5px 0px;
@@ -194,6 +195,7 @@ header{
             position: absolute;
             top: 100%;
             right: -30px;
+            z-index: 2;
 
             padding: 10px;
             display: none;
@@ -249,7 +251,7 @@ header{
                         .item-title{
                             font-size: 13px;
                             font-weight: 400;
-                            color: $textGray;
+                            color: $textGrayLight;
                             margin-top: 0;
                             margin-bottom: 10px;
                             &:hover{
@@ -332,6 +334,15 @@ header{
         @media(max-width: 991px){
             display: none;
         }
+    }
+    .category-sidebar-btn{
+        @media(min-width: 992px){
+            display: none;
+        }
+        font-size: 17px;
+        margin-right: 15px;
+        margin-top: 20px;
+        color: #6a6a6a;
     }
     .mobile-view{
         display: inline-block;

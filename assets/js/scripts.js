@@ -26,7 +26,13 @@ if(dropdown.length){
     dropdownFun();
 }
 $(document).on('click', '.toggle-active-parent', function(){
-    $(this).parent().toggleClass('active');
+    var $this = $(this);
+    $this.parent().toggleClass('active');
+
+    if($this.parent('.accordion').length){
+        $this.parent().siblings().removeClass('active').find('.accordion-body').slideUp(300);
+        $this.parent().find('.accordion-body').slideToggle(300);
+    }
 });
 
 
@@ -35,10 +41,20 @@ $(document).on('click', function(event){
 
     $('.click-outside').each(function(index){
         var $this = $(this);
-        if($this.hasClass('active') && $target.closest('.click-outside').length == 0 ){
-            $this.removeClass('active');
+
+
+        var hasClass = $this.hasClass('remove-from-parent') ? $this.parent().hasClass('active') : $this.hasClass('active');
+        
+        if(hasClass && $target.closest('.click-outside').length == 0 && !$target.hasClass('click-outside-btn') ){
+
+            $this.hasClass('remove-from-parent') ? $this.parent().removeClass('active').parents('body').removeClass('sidebar-oppend') : $this.removeClass('active');
+        
         }
+
     });
     
+});
+$(document).on('click', '.category-sidebar-btn', function(){
+    $('.category-sidebar').addClass('active').parents('body').addClass('sidebar-oppend');
 });
 });

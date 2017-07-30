@@ -1,0 +1,91 @@
+.accordion-container{
+    .accordion{
+        position: relative;
+        margin-bottom: 20px;
+        .accordion-btn{
+            position: absolute;
+            right: 0;
+            top: 0;
+            opacity: 0.5;
+            font-size: 13px;
+            line-height: 1;
+            .minus{
+                display: none;
+            }
+        }
+        .accordion-header{
+            .accordion-title{
+                color: $textGray;
+                font-size: 13px;
+                font-weight: 500;
+                text-transform: uppercase;
+                margin: 0;
+                .status{
+                    position: relative;
+
+                    height: 14px;
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin-left: 10px;
+                    padding: 0 4px;
+                    
+                    background-color: $textBlack;
+                    color: #fff;
+                    border-radius: 2px;
+                    
+                    font-size: 8px;
+                    line-height: 14px;
+                    &:before{
+                        content: '';
+                        border-right: 4px solid $textBlack;
+                        border-top: 4px solid transparent;
+                        border-bottom: 4px solid transparent;
+                        display: inline-block;
+                        position: absolute;
+                        right: 100%;
+                        top: 50%;
+                        margin-top: -4px;
+                    }
+                    &.red{
+                        background-color: #eb2771;
+                        &:before{
+                            border-right-color: #eb2771;
+                        }
+                    }
+                    &.green{
+                        background-color: #0cc485;
+                        &:before{
+                            border-right-color: #0cc485;
+                        }
+                    }
+                }
+            }
+        }
+        .accordion-body{
+            padding-left: 15px;
+            display: none;
+            transition: padding-top 0.3s, padding-bottom 0.3s;
+        }
+        &:hover{
+            .accordion-btn{
+                opacity: 1;
+            }
+        }
+        &.active{
+            .accordion-btn{
+                .minus{
+                    display: block;
+                }
+                .plus{
+                    display: none;
+                }
+            }
+            .accordion-body{
+                transition: none;
+                padding-top: 15px;
+                padding-bottom: 15px 0;
+                
+            }
+        }
+    }
+}
