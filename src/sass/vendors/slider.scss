@@ -1,0 +1,28 @@
+.slider{
+    position: relative;
+    overflow-x: hidden;
+    
+    .slider-banner{
+        transition: transform 0.5s, margin-left 0.5s ease-out;
+        &:after{
+            content: '';
+            width: auto;
+            display: table;
+            clear: both;
+        }
+        .slider-item{
+            width: 100%;
+            float: left;
+        }
+    }
+
+    .slider-controllers{
+        .icon{
+            display: inline-block;
+            vertical-align: top;
+            padding: 0 5px;
+            font-size: 28px;
+            line-height: 1;
+        }
+    }
+}

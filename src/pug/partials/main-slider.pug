@@ -1,0 +1,24 @@
+.main-slider.slider
+    
+    .slider-banner
+        -for(var i = 0; i <= 10; i++)
+            .slider-item
+                .slide-img.image-ratio
+                    .ratio.main-slider-ratio
+                    .ratio-inner
+                        .content
+                            h3.title 
+                                |VINTAGE + #{i}
+                                br
+                                |STYLEFURNITURES
+                            a.link(href="#") Shop Now
+                        img(src="assets/images/main-slider/img-slider-1.png", alt="slider image" draggable="false")
+    .slider-controllers
+        button.icon.prev.fa.fa-angle-left(type="button")
+        button.icon.next.fa.fa-angle-right(type="button")
+    
+    .slider-dots
+        ul.dots-list
+            li.dot
+            li.dot
+            li.dot
