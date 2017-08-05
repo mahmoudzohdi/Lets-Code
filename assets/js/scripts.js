@@ -26,7 +26,6 @@ null==d?void 0:d))},attrHooks:{type:{set:function(a,b){if(!o.radioValue&&"radio"
             prevBtn: $this.find('.prev'),
             move: 0,
             clicked: false,
-            windowResizing: false,
             mousedown: false,
             pageX: 0
         }
@@ -115,13 +114,10 @@ null==d?void 0:d))},attrHooks:{type:{set:function(a,b){if(!o.radioValue&&"radio"
         
 
 
-
+        var windowResizing;
         $(window).on('resize', function(){
-            if(!sliderObj.windowResizing){
-                sliderObj.windowResizing = true;
-                resizing();
-                setTimeout(function(){sliderObj.windowResizing = false;}, 100);
-            }
+            clearTimeout(windowResizing);
+            windowResizing = setTimeout(resizing, 200);
         });
 
 
