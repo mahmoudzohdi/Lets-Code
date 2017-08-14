@@ -1,0 +1,58 @@
+.product-card{
+	.card-image{
+		.main-img{
+			position: relative;
+			z-index: 1;
+			transition: opacity 0.4s;
+		}
+		.hover-effect{
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+
+			z-index: 0;
+			transform: scaleX(-1);
+		}
+		&:hover{
+			.main-img{
+				opacity: 0;
+			}
+		}
+	}
+
+	.card-content{
+		.card-title{
+			font-size: 14px;
+			color: $textGray;
+			font-weight: 500;
+			margin-bottom: 6px;
+		}
+		.rate{
+			color: $textGrayLight;
+		}
+		.price{
+			font-size: 14px;
+			font-weight: 500;
+			color: $textGray;
+			margin-top: 5px;
+		}
+	}
+}
+
+// fix product card padding in products-slider
+.featured-products{
+	position: relative;
+	.featured-products-slider{
+		margin: 0 -10px;
+		.slider-item{
+			padding: 0 10px;
+		}
+		.slider-controllers{
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
+	}
+}

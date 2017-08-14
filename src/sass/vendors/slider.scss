@@ -1,5 +1,5 @@
-.slider{
-    position: relative;
+.slider-plugin{
+    // position: relative;
     overflow-x: hidden;
     
     .slider-banner{
@@ -23,6 +23,12 @@
             padding: 0 5px;
             font-size: 28px;
             line-height: 1;
+            &.disabled{
+                opacity: 0.5;
+                cursor: not-allowed;
+            }
         }
     }
+
+
 }

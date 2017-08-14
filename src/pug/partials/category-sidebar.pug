@@ -50,3 +50,16 @@
                                 each val in ['WOMEN CLOTHES', 'MEN CLOTHES', 'Shoes' ]
                                     li.ls-item
                                         a(href="#")= val
+                li.accordion
+                    button(type="button").accordion-btn.toggle-active-parent
+                        span.icon.plus.fa.fa-plus
+                        span.icon.minus.fa.fa-minus
+                    .accordion-header
+                        h3.accordion-title
+                            a(href="#")
+                                |Fashion
+                    .accordion-body
+                        ul.list-style
+                            each val in ['WOMEN CLOTHES', 'MEN CLOTHES', 'Shoes' ]
+                                li.ls-item
+                                    a(href="#")= val

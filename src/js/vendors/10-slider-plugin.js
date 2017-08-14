@@ -1,122 +1,155 @@
 (function($){
 
     $.fn.slider = function(options){
+        return this.each(function(){
 
-        options = $.extend({
-            slidesToShow: 1,
-            autoplay: true,
-            watingTime: 3000,
-            arrows: true,
-            dots: false
-        }, options);
+            var sliderOptions = $.extend({
+                slidesToShow: 1,
+                autoplay: true,
+                watingTime: 3000,
+                arrows: true,
+                dots: false,
+                responsive: false
+            }, options);
 
-
-        var $this = $(this);
-
-        var sliderObj = {
-            sliderBanner: $this.find('.slider-banner'),
-            sliderItem: $this.find('.slider-item'),
-            itemsLength: $this.find('.slider-item').length,
-            nextBtn: $this.find('.next'),
-            prevBtn: $this.find('.prev'),
-            move: 0,
-            clicked: false,
-            mousedown: false,
-            pageX: 0
-        }
-        
-        function resizing(){
-
-            sliderObj.sliderItem.width( parseInt( $this.width() / options.slidesToShow ) );
-            sliderObj.sliderBanner.width(sliderObj.itemsLength * sliderObj.sliderItem.outerWidth());
-            sliderObj.sliderBanner.css('transform', 'translateX('+ -(sliderObj.move*sliderObj.sliderItem.width()) +'px)');
-            console.log('resizing');
-        }resizing();
-
-
-        sliderObj.nextBtn.click(function(){
-            if(!sliderObj.clicked){
-                clearTimeout(timeout);
-                sliderObj.clicked = true;
-                sliderObj.move = sliderObj.move == (sliderObj.itemsLength - 1) ? sliderObj.itemsLength - 1 : sliderObj.move + 1;
-                sliderObj.sliderBanner.css('transform', 'translateX('+ -(sliderObj.move*sliderObj.sliderItem.width()) +'px)');
-                setTimeout(function(){
-                    sliderObj.clicked = false;
-                    if(options.autoplay){
-                        autoplay();
-                    }
-                }, 505);
+            var $this = $(this);
+            $this.addClass('slider-plugin');
+            var sliderObj = {
+                sliderBanner: $this.find('.slider-banner'),
+                sliderItem: $this.find('.slider-item'),
+                itemsLength: $this.find('.slider-item').length,
+                nextBtn: $this.find('.next'),
+                prevBtn: $this.find('.prev'),
+                move: 0,
+                clicked: false,
+                mousedown: false,
+                pageX: 0
             }
-        });
 
-        sliderObj.prevBtn.click(function(){
-            if(!sliderObj.clicked){
-                clearTimeout(timeout);
-                sliderObj.clicked = true;
-                sliderObj.move = sliderObj.move <= 0? 0 : sliderObj.move - 1;
-                sliderObj.sliderBanner.css('transform', 'translateX('+ -(sliderObj.move*sliderObj.sliderItem.width()) +'px)');
-                setTimeout(function(){
-                    sliderObj.clicked = false;
-                    if(options.autoplay){
-                        autoplay();
-                    }
-                }, 505);
-            }
-        });
-
-        // autoplay
-        var timeout;
-        function autoplay(){
-            timeout = setTimeout(function(){
-                sliderObj.nextBtn.trigger('click');
-                autoplay();
-            }, options.watingTime);
-        }
-        if(options.autoplay){
-            autoplay();
-        }
-        
-
-        $this.on('mousedown', function(e){
-            e.preventDefault();
-            sliderObj.mousedown = true;
-            sliderObj.pageX = e.pageX;
-            clearTimeout(timeout);
-
-        });
-        $(document).on('mouseup', function(e){
-            e.preventDefault();
-            if(sliderObj.mousedown){
-                sliderObj.mousedown = false;
-                if(e.pageX - sliderObj.pageX > 100){
-                    sliderObj.prevBtn.trigger('click');
-                }else if(e.pageX - sliderObj.pageX < -100){
-                    sliderObj.nextBtn.trigger('click');
-                }else{
-                    autoplay();
+            var reponsiveScreenFound = false;
+            function reponsiveFn(){
+                if(sliderOptions.responsive){
+                    $.each(sliderOptions.responsive, function (index, item){
+                        if($(window).width() <= item.breakpoint){
+                            $.extend(sliderOptions, item.settings);
+                            reponsiveScreenFound = true;
+                        }else if(!reponsiveScreenFound){
+                            $.extend(sliderOptions, options);
+                        }
+                    });
+                    reponsiveScreenFound = false;
                 }
-                sliderObj.sliderBanner.css('margin-left','0px');
+            }reponsiveFn();
+            
+            function resizing(){
+
+                reponsiveFn();
+
+                sliderObj.sliderItem.outerWidth( parseInt( $this.outerWidth() / sliderOptions.slidesToShow ) );
+                sliderObj.sliderBanner.outerWidth(sliderObj.itemsLength * sliderObj.sliderItem.outerWidth());
+                sliderObj.sliderBanner.css('transform', 'translateX('+ -(sliderObj.move*sliderObj.sliderItem.outerWidth()) +'px)');
+            
+            }resizing();
+
+            function nextFn(){
+                if(!sliderObj.clicked){
+                    sliderObj.clicked = true;
+                    var lastSlide = ((sliderObj.itemsLength - 1) - (sliderOptions.slidesToShow - 1));
+                    sliderObj.move = sliderObj.move ==  lastSlide? lastSlide : sliderObj.move + 1;
+                    sliderObj.sliderBanner.css('transform', 'translateX('+ -(sliderObj.move*sliderObj.sliderItem.outerWidth()) +'px)');
+                    setTimeout(function(){
+                        sliderObj.clicked = false;
+                        if(sliderOptions.autoplay){
+                            autoplay();
+                        }
+                    }, 505);
+
+                    if(sliderObj.move == lastSlide){
+                        sliderObj.nextBtn.addClass('disabled');
+                    }else{
+                        $this.find('.slider-controllers .icon').removeClass('disabled');
+                    }
+                }
             }
-        });
-        $(document).on('mousemove', function(e){
-            e.preventDefault();
-            if(sliderObj.mousedown){
-                sliderObj.sliderBanner.css('margin-left', (e.pageX - sliderObj.pageX) +'px');
+                
+            function prevFn(){
+                if(!sliderObj.clicked){
+                    sliderObj.clicked = true;
+                    sliderObj.move = sliderObj.move <= 0? 0 : sliderObj.move - 1;
+                    sliderObj.sliderBanner.css('transform', 'translateX('+ -(sliderObj.move*sliderObj.sliderItem.outerWidth()) +'px)');
+                    setTimeout(function(){
+                        sliderObj.clicked = false;
+                        if(sliderOptions.autoplay){
+                            autoplay();
+                        }
+                    }, 505);
+
+                    if(sliderObj.move <= 0){
+                        sliderObj.prevBtn.addClass('disabled');
+                    }else{
+                        $this.find('.slider-controllers .icon').removeClass('disabled');
+                    }
+                }
             }
+
+            sliderObj.nextBtn.click(nextFn);
+
+            sliderObj.prevBtn.click(prevFn);
+
+            // autoplay
+            var timeout;
+            function autoplay(){
+                clearTimeout(timeout);
+                timeout = setTimeout(function(){
+                    nextFn();
+                    autoplay(); // should be removed
+                }, sliderOptions.watingTime);
+            }
+            if(sliderOptions.autoplay){
+                autoplay();
+            }
+            
+
+            $this.on('mousedown', function(e){
+                e.preventDefault();
+                sliderObj.mousedown = true;
+                sliderObj.pageX = e.pageX;
+                clearTimeout(timeout);
+
+            });
+            $(document).on('mouseup', function(e){
+                e.preventDefault();
+                if(sliderObj.mousedown){
+                    sliderObj.mousedown = false;
+                    if(e.pageX - sliderObj.pageX > 100){
+                        prevFn();
+                    }else if(e.pageX - sliderObj.pageX < -100){
+                        nextFn();
+                    }else{
+                        autoplay();
+                    }
+                    sliderObj.sliderBanner.css('margin-left','0px');
+                }
+            });
+            $(document).on('mousemove', function(e){
+                e.preventDefault();
+                if(sliderObj.mousedown){
+                    sliderObj.sliderBanner.css('margin-left', (e.pageX - sliderObj.pageX) +'px');
+                }
+            });
+
+
+            
+
+
+            var windowResizing;
+            $(window).on('resize', function(){
+                clearTimeout(windowResizing);
+                windowResizing = setTimeout(resizing, 200);
+            });
+
+
         });
-
-
-        
-
-
-        var windowResizing;
-        $(window).on('resize', function(){
-            clearTimeout(windowResizing);
-            windowResizing = setTimeout(resizing, 200);
-        });
-
-
-        return this;
     }
 
 }( jQuery ));

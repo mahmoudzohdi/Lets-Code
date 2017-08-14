@@ -1,0 +1,24 @@
+.offers-slider{
+	.slider-item{
+		.content{
+			position: absolute;
+			top: 50px;
+			left: 0;
+			right: 0;
+
+			width: 100%;
+			text-align: center;
+			text-transform: uppercase;
+			.paragraph{
+				color: $borwnLight;
+				font-size: 18px;
+				font-weight: 500;
+			}
+			.shop-now{
+				font-size: 13px;
+				text-decoration: underline;
+				color: $textGrayLight;
+			}
+		}
+	}
+}

@@ -6,11 +6,16 @@ html
         include ./partials/header
 
         .container
-            .row
+            .row.row-section
                 .col-md-3
                     include ./partials/category-sidebar
                 .col-md-9.col-xs-12
                     include ./partials/main-slider
+            .row.row-section
+                .col-md-9.col-xs-12.col-md-push-3
+                    include ./partials/featured-products-slider
+                .col-md-3.col-xs-12.col-md-pull-9
+                    include ./partials/offers-slider
 
         
         script(src="assets/js/scripts.js")

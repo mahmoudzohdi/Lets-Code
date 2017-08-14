@@ -1,0 +1,13 @@
+.section.featured-products
+	.section-header
+		h2.section-title FEATURED PRODUCT
+	.section-body
+		.featured-products-slider
+			.slider-banner
+				-for(var i = 0; i <= 10; i++)
+					.slider-item
+						include ./product-card
+			.slider-controllers
+				button.icon.prev.fa.fa-angle-left(type="button")
+				button.icon.next.fa.fa-angle-right(type="button")
+					
