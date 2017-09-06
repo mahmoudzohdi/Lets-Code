@@ -12,3 +12,37 @@ button{
         outline: none;
     }
 }
+
+
+.form-input{
+	margin-bottom: 10px;
+	&:last-child{
+		margin-bottom: 0;
+	}
+	input{
+		width: 100%;
+		border: 1px solid #eee;
+		&.submit-btn{
+			&.line{
+				background-color: transparent;
+				border: 1px solid $yellow;
+				color: $yellow;
+				&:hover{
+					color: #fff;
+					background-color: $yellow;
+				}
+			}
+		}
+	}
+	&.icon-right{
+		position: relative;
+		.icon{
+			position: absolute;
+			right: 10px;
+			top: 12px;
+			font-size: 16px;
+			z-index: 1;
+			color: #333;
+		}
+	}
+}

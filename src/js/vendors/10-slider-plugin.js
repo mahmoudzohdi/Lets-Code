@@ -9,9 +9,10 @@
                 watingTime: 3000,
                 arrows: true,
                 dots: false,
-                responsive: false
-            }, options);
-
+								responsive: false,
+								mouseDrag: true
+						}, options);
+						
             var $this = $(this);
             $this.addClass('slider-plugin');
             var sliderObj = {
@@ -57,6 +58,7 @@
                     var lastSlide = ((sliderObj.itemsLength - 1) - (sliderOptions.slidesToShow - 1));
                     sliderObj.move = sliderObj.move ==  lastSlide? lastSlide : sliderObj.move + 1;
                     sliderObj.sliderBanner.css('transform', 'translateX('+ -(sliderObj.move*sliderObj.sliderItem.outerWidth()) +'px)');
+										activeDots(sliderObj.move);
                     setTimeout(function(){
                         sliderObj.clicked = false;
                         if(sliderOptions.autoplay){
@@ -77,6 +79,7 @@
                     sliderObj.clicked = true;
                     sliderObj.move = sliderObj.move <= 0? 0 : sliderObj.move - 1;
                     sliderObj.sliderBanner.css('transform', 'translateX('+ -(sliderObj.move*sliderObj.sliderItem.outerWidth()) +'px)');
+										activeDots(sliderObj.move);
                     setTimeout(function(){
                         sliderObj.clicked = false;
                         if(sliderOptions.autoplay){
@@ -109,34 +112,68 @@
                 autoplay();
             }
             
+						function mouseDrag(){
 
-            $this.on('mousedown', function(e){
-                e.preventDefault();
-                sliderObj.mousedown = true;
-                sliderObj.pageX = e.pageX;
-                clearTimeout(timeout);
+							$this.on('mousedown', function(e){
+									e.preventDefault();
+									sliderObj.mousedown = true;
+									sliderObj.pageX = e.pageX;
+									clearTimeout(timeout);
+	
+							});
+							$(document).on('mouseup', function(e){
+									e.preventDefault();
+									if(sliderObj.mousedown){
+											sliderObj.mousedown = false;
+											if(e.pageX - sliderObj.pageX > 100){
+													prevFn();
+											}else if(e.pageX - sliderObj.pageX < -100){
+													nextFn();
+											}else{
+													autoplay();
+											}
+											sliderObj.sliderBanner.css('margin-left','0px');
+									}
+							});
+							$(document).on('mousemove', function(e){
+									e.preventDefault();
+									if(sliderObj.mousedown){
+											sliderObj.sliderBanner.css('margin-left', (e.pageX - sliderObj.pageX) +'px');
+									}
+							});
+						}
+						if(sliderOptions.mouseDrag){
+							mouseDrag();
+						}
 
-            });
-            $(document).on('mouseup', function(e){
-                e.preventDefault();
-                if(sliderObj.mousedown){
-                    sliderObj.mousedown = false;
-                    if(e.pageX - sliderObj.pageX > 100){
-                        prevFn();
-                    }else if(e.pageX - sliderObj.pageX < -100){
-                        nextFn();
-                    }else{
-                        autoplay();
-                    }
-                    sliderObj.sliderBanner.css('margin-left','0px');
-                }
-            });
-            $(document).on('mousemove', function(e){
-                e.preventDefault();
-                if(sliderObj.mousedown){
-                    sliderObj.sliderBanner.css('margin-left', (e.pageX - sliderObj.pageX) +'px');
-                }
-            });
+						function activeDots(index){
+							$this.find('.slider-dots .dot').removeClass('active').eq(index).addClass('active');
+						}
+						
+						function drawDots(){
+							
+							var slidesNum = sliderObj.itemsLength / sliderOptions.slidesToShow;
+							liArray = [];
+							for(var i = 1; i <= slidesNum; i++){
+								liArray.push('<li class="dot '+(i == 1? "active": "")+'"></li>');	
+							}
+							$this.append('<ul class="slider-dots">'+liArray.join('')+'</ul>');
+							
+							$this.on('click', '.slider-dots .dot', function(){
+								sliderObj.move = $(this).index();
+								activeDots(sliderObj.move);
+
+								sliderObj.sliderBanner.css('transform', 'translateX('+ -(sliderObj.move*sliderObj.sliderItem.outerWidth()) +'px)');
+		
+								if(sliderOptions.autoplay){
+									autoplay();
+								}
+							})
+							
+						}
+						if(sliderOptions.dots){
+							drawDots();
+						}
 
 
             

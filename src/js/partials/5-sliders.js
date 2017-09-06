@@ -16,3 +16,7 @@ $('.featured-products-slider').slider({
 		}
 	]
 });
+
+$('.testimonials-slider').slider({
+	dots: true,
+});

@@ -1,21 +1,33 @@
 doctype
 html
-    head
-        include ./partials/head
-    body
-        include ./partials/header
+	head
+		include ./partials/head
+	body
+		include ./partials/header
+		
+		.container
+			.row
+				.col-md-3
+					include ./partials/category-sidebar
+				.col-md-9.col-xs-12
+					include ./partials/main-slider
+			.row
+				.col-md-9.col-xs-12.col-md-push-3
+					include ./partials/featured-products-slider
+					include ./partials/home-collection
+					.row
+						.col-sm-8.col-xs-12
+							include ./partials/best-seller
+							include ./partials/sale
 
-        .container
-            .row.row-section
-                .col-md-3
-                    include ./partials/category-sidebar
-                .col-md-9.col-xs-12
-                    include ./partials/main-slider
-            .row.row-section
-                .col-md-9.col-xs-12.col-md-push-3
-                    include ./partials/featured-products-slider
-                .col-md-3.col-xs-12.col-md-pull-9
-                    include ./partials/offers-slider
+						.col-sm-4.col-xs-12
+							include ./partials/most-wanted-slider
 
-        
-        script(src="assets/js/scripts.js")
+				.col-md-3.col-xs-12.col-md-pull-9
+					include ./partials/offers-slider
+					include ./partials/newsletter
+					include ./partials/testimonials-slider
+
+
+	
+		script(src="assets/js/scripts.js")

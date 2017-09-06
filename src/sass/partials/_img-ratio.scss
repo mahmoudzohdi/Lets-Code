@@ -7,13 +7,19 @@
             padding-top: 50%;
         }
         &.cart-item{
-            padding-top: 120%;
+						padding-top: 120%;
+					.small-theme &{
+						padding-top: 89.6%;
+					}		
         }
         &.main-slider-ratio{
             padding-top: 53.7%;
         }
         &.offer-ratio{
             padding-top: 134.5%;
+        }
+        &.collection-ratio{
+            padding-top: 35.6%;
         }
     }
     .ratio-inner{

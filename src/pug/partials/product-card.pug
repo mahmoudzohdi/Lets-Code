@@ -1,4 +1,9 @@
-.product-card
+if(smallTheme)
+	-var smallThemeClass = 'small-theme'
+else
+	-var smallThemeClass = ''
+
+.product-card(class=smallThemeClass)
 	.card-image
 		.image-ratio
 			.ratio.cart-item

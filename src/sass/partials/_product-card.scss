@@ -42,17 +42,17 @@
 }
 
 // fix product card padding in products-slider
-.featured-products{
+.featured-products, .most-wanted-section{
 	position: relative;
 	.featured-products-slider{
 		margin: 0 -10px;
 		.slider-item{
 			padding: 0 10px;
 		}
-		.slider-controllers{
-			position: absolute;
-			top: 0;
-			right: 0;
-		}
+	}
+	.slider-controllers{
+		position: absolute;
+		top: 0;
+		right: 0;
 	}
 }

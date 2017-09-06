@@ -1,65 +1,67 @@
-.sidebar.category-sidebar
-    .mobile-overlay
-    .click-outside.remove-from-parent
-        .sidebar-header
-            h2.sidebar-title
-                |Category
-        .sidebar-body
-            ul.accordion-container
-                -for(var i = 1; i <= 3; i++)
-                    li.accordion
-                        button(type="button").accordion-btn.toggle-active-parent
-                            span.icon.plus.fa.fa-plus
-                            span.icon.minus.fa.fa-minus
-                        .accordion-header
-                            h3.accordion-title
-                                a(href="#")
-                                    |Fashion
-                        .accordion-body
-                            ul.list-style
-                                each val in ['WOMEN CLOTHES', 'MEN CLOTHES', 'Shoes' ]
-                                    li.ls-item
-                                        a(href="#")= val
-                    li.accordion
-                        button(type="button").accordion-btn.toggle-active-parent
-                            span.icon.plus.fa.fa-plus
-                            span.icon.minus.fa.fa-minus
-                        .accordion-header
-                            h3.accordion-title
-                                a(href="#")
-                                    |Fashion
-                                    span.status.red
-                                        |Hot
-                        .accordion-body
-                            ul.list-style
-                                each val in ['WOMEN CLOTHES', 'MEN CLOTHES', 'Shoes' ]
-                                    li.ls-item
-                                        a(href="#")= val
-                    li.accordion
-                        button(type="button").accordion-btn.toggle-active-parent
-                            span.icon.plus.fa.fa-plus
-                            span.icon.minus.fa.fa-minus
-                        .accordion-header
-                            h3.accordion-title
-                                a(href="#")
-                                    |Fashion
-                                    span.status.green
-                                        |New
-                        .accordion-body
-                            ul.list-style
-                                each val in ['WOMEN CLOTHES', 'MEN CLOTHES', 'Shoes' ]
-                                    li.ls-item
-                                        a(href="#")= val
-                li.accordion
-                    button(type="button").accordion-btn.toggle-active-parent
-                        span.icon.plus.fa.fa-plus
-                        span.icon.minus.fa.fa-minus
-                    .accordion-header
-                        h3.accordion-title
-                            a(href="#")
-                                |Fashion
-                    .accordion-body
-                        ul.list-style
-                            each val in ['WOMEN CLOTHES', 'MEN CLOTHES', 'Shoes' ]
-                                li.ls-item
-                                    a(href="#")= val
+.section
+	.section-body
+		.sidebar.category-sidebar
+			.mobile-overlay
+			.click-outside.remove-from-parent
+					.sidebar-header
+							h2.sidebar-title
+									|Category
+					.sidebar-body
+							ul.accordion-container
+									-for(var i = 1; i <= 3; i++)
+											li.accordion
+													button(type="button").accordion-btn.toggle-active-parent
+															span.icon.plus.fa.fa-plus
+															span.icon.minus.fa.fa-minus
+													.accordion-header
+															h3.accordion-title
+																	a(href="#")
+																			|Fashion
+													.accordion-body
+															ul.list-style
+																	each val in ['WOMEN CLOTHES', 'MEN CLOTHES', 'Shoes' ]
+																			li.ls-item
+																					a(href="#")= val
+											li.accordion
+													button(type="button").accordion-btn.toggle-active-parent
+															span.icon.plus.fa.fa-plus
+															span.icon.minus.fa.fa-minus
+													.accordion-header
+															h3.accordion-title
+																	a(href="#")
+																			|Fashion
+																			span.status.red
+																					|Hot
+													.accordion-body
+															ul.list-style
+																	each val in ['WOMEN CLOTHES', 'MEN CLOTHES', 'Shoes' ]
+																			li.ls-item
+																					a(href="#")= val
+											li.accordion
+													button(type="button").accordion-btn.toggle-active-parent
+															span.icon.plus.fa.fa-plus
+															span.icon.minus.fa.fa-minus
+													.accordion-header
+															h3.accordion-title
+																	a(href="#")
+																			|Fashion
+																			span.status.green
+																					|New
+													.accordion-body
+															ul.list-style
+																	each val in ['WOMEN CLOTHES', 'MEN CLOTHES', 'Shoes' ]
+																			li.ls-item
+																					a(href="#")= val
+									li.accordion
+											button(type="button").accordion-btn.toggle-active-parent
+													span.icon.plus.fa.fa-plus
+													span.icon.minus.fa.fa-minus
+											.accordion-header
+													h3.accordion-title
+															a(href="#")
+																	|Fashion
+											.accordion-body
+													ul.list-style
+															each val in ['WOMEN CLOTHES', 'MEN CLOTHES', 'Shoes' ]
+																	li.ls-item
+																			a(href="#")= val

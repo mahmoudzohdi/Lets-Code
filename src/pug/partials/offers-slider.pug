@@ -1,15 +1,16 @@
-.offers-slider.slider
-    
-    .slider-banner
-        -for(var i = 0; i <= 10; i++)
-            .slider-item
-                .slide-img.image-ratio
-                    .ratio.offer-ratio
-                    .ratio-inner
-                        .content
-                            p.paragraph
-                                |Brown 
-                                br
-                                |Woman Shoes
-                            a(href="#").shop-now Shop Now
-                        img(src="assets/images/offers-slider/offer-1.png", alt="slider image" draggable="false")
+.section
+	.section-body
+		.offers-slider.slider    
+			.slider-banner
+					-for(var i = 0; i <= 10; i++)
+							.slider-item
+									.slide-img.image-ratio
+											.ratio.offer-ratio
+											.ratio-inner
+													.content
+															p.paragraph
+																	|Brown 
+																	br
+																	|Woman Shoes
+															a(href="#").shop-now Shop Now
+													img(src="assets/images/offers-slider/offer-1.png", alt="slider image" draggable="false")

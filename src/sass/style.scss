@@ -1,13 +1,14 @@
-// import vendors
-@import './vendors/bootstrap.min';
-@import './vendors/font-awesome';
-@import './vendors/slider';
 
 // import our main style files
 @import './partials/_fonts';
 @import './partials/_colors';
 @import './partials/_img-ratio';
 @import './partials/_buttons';
+
+// import vendors
+@import './vendors/bootstrap.min';
+@import './vendors/font-awesome';
+@import './vendors/slider';
 
 // import our components style files
 @import './partials/_global';
@@ -19,3 +20,4 @@
 @import './partials/_main-slider';
 @import './partials/_offers-slider';
 @import './partials/_product-card';
+@import './partials/_testimonials-slider';

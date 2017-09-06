@@ -1,0 +1,14 @@
+.section.most-wanted-section
+	.section-header
+		h2.section-title Most Wanted
+	.section-body
+		.most-wanted-slider.slider
+			.slider-banner
+				-for(var i = 0; i <= 10; i++)
+					.slider-item
+						a(href="#")
+							img(src="assets/images/most-wanted/img-1.png", alt="most wanted image")
+			.slider-controllers
+				button.icon.prev.fa.fa-angle-left(type="button")
+				button.icon.next.fa.fa-angle-right(type="button")
+					
