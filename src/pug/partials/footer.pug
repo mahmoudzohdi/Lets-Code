@@ -1,0 +1,63 @@
+footer
+	.container
+		.store-features
+			.row
+				-for(var i = 1; i <=3; i++)
+					.col-sm-4.col-xs-12.feature
+						h4.title
+							|FREE SHIPPING &amp; RETURN
+						p.description
+							|Free shipping on all orders over $99
+		.row.footer-col-container
+			.col-md-3.col-sm-4.col-xs-6.footer-col
+				h4.col-title
+					|CONTACT INFORMATION
+
+				ul.footer-list
+					-for(var i = 1; i <= 4; i++)
+						li.list-item
+							|123 Shopo Studio
+			.col-md-3.col-sm-4.col-xs-6.footer-col
+				h4.col-title
+					|COLLECTION
+				ul.footer-list
+					-for(var i = 1; i <= 4; i++)
+						li.list-item
+							a(href="#")
+								|Fashion
+			.col-md-3.col-sm-4.col-xs-6.footer-col
+				h4.col-title
+					|MY ACCOUNT
+				ul.footer-list
+					-for(var i = 1; i <= 4; i++)
+						li.list-item
+							a(href="#")
+								|My Account
+			
+			.clearfix.visible-xs
+			.col-md-3.col-sm-6.co-xs-12.footer-col.newsletter-col
+				h4.col-title
+					|NEWSLETTER
+				p.description
+					|Signup for our newsletter
+				form.footer-newsletter-form
+					.form-input
+						input(type="text" placeholder="Your Email" required).email-input
+						input(type="submit" value="Go").submit-btn
+				ul.social-media
+					li.item
+						a(href="#")
+							span.icon.fa.fa-facebook
+					li.item
+						a(href="#")
+							span.icon.fa.fa-twitter
+					li.item
+						a(href="#")
+							span.icon.fa.fa-linkedin
+	
+	.copyrights-row
+		.container
+			p.paragraph
+				|Online © 2017. All Rights Reserved
+			.supported-payment
+				img(src="assets/images/footer/payment.png" alt="supported payment" draggable="false")

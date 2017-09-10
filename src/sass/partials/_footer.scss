@@ -1,0 +1,131 @@
+footer{
+	margin-top: 60px;
+	background-color: $black;
+	.store-features{
+		background-color: $softGray;
+		text-align: center;
+		margin-top: -41px;
+		margin-bottom: 30px;
+		> .row{
+			margin-right: 0;
+			margin-left:	 0;
+		}
+		.feature{
+			border-bottom: 1px solid $black;
+			padding: 20px 0px;
+			@media(min-width: 768px){
+				border-right: 1px solid $black;
+				border-bottom: none;
+			}
+			&:last-child{
+				border-right: none;
+				border-bottom: none;
+			}
+			.title{
+				color: #D9D9D9;
+				font-weight: 400;
+				font-size: 15px;
+				margin-top: 0;
+				margin-bottom: 5px;
+				font-family: $secondFont;
+			}
+			.description{
+				color: #A5A5A5;
+				font-weight: 300;
+				font-size: 12px;
+				margin: 0;
+			}
+		}
+	}
+	.footer-col{
+		@media(max-width: 500px){
+			width: 100%;
+		}
+		.col-title{
+			color: #D9D9D9;
+			font-weight: 400;
+			margin-bottom: 20px;
+			font-family: $secondFont;
+			font-size: 16px;
+		}
+		.footer-list{
+			.list-item{
+				color: #707070;
+				font-weight: 300;
+				margin-bottom: 10px;
+				font-size: 14px;
+				&:last-child{
+					margin-bottom: 0;
+				}
+				a{
+					&:hover{
+						text-decoration: underline;
+					}
+				}
+			}
+		}
+	}
+	.newsletter-col{
+		.description{
+			color: #707070;
+		}
+		.social-media{
+			margin-top: 20px;
+			.item{
+				display: inline-block;
+				margin-right: 10px;
+				font-size: 18px;
+				a{
+					width: 50px;
+					height: 50px;
+					display: block;
+
+					border: 2px solid #363636;
+					border-radius: 50%;
+					color: #fff;
+					
+					text-align: center;
+					line-height: 50px;
+
+					transition: 0.3s;
+					&:hover{
+						border-color: #fff;
+						background-color: #fff;
+						color: #333;
+					}
+				}
+			}
+		}
+	}
+	.copyrights-row{
+		border-top: 1px solid #1d1d1d;
+		padding: 40px 0;
+		margin-top: 30px;
+		.paragraph{
+			display: inline-block;
+			color: #707070;
+			margin: 0;
+		}
+		.supported-payment{
+			float: right;
+			@media(max-width: 700px){
+			}
+			img{
+				display: inline-block;
+				max-width: 100%;
+			}
+		}
+		@media(max-width: 700px){
+			padding: 20px 0;
+			.paragraph{
+				display: block;
+				margin-bottom: 15px;
+				text-align: center;
+			}
+			.supported-payment{
+				float: none;
+				text-align: center;
+			}
+		}
+	}
+}

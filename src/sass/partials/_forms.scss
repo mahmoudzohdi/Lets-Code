@@ -46,3 +46,37 @@ button{
 		}
 	}
 }
+
+.footer-newsletter-form{
+	
+	.form-input{
+		&:after{
+			content: '';
+			clear: both;
+			display: table;
+		}
+		input{
+			display: inline-block;
+			border: 2px solid #363636;
+			float: left;
+		}
+		.email-input{
+			width: 80%;
+			background-color: transparent;
+			color: #707070;
+			border-right: none;
+		}
+		.submit-btn{
+			width: 20%;
+			padding-left: 0;
+			padding-right: 0;
+			text-align: center;
+			background-color: #363636;
+			color: #D9D9D9;
+			&:hover{
+				background-color: #2f2f2f;
+				border-color: #2f2f2f;
+			}
+		}	
+	}
+}
