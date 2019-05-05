@@ -6,3 +6,5 @@ Let's Code is a [playlist on youtube](https://www.youtube.com/playlist?list=PLLX
 ### [Project 1](https://github.com/mahmoudzohdi/Lets-Code/tree/project-1)
 
 ### [Project 2](https://github.com/mahmoudzohdi/Lets-Code/tree/project-2)
+
+### [Project 3](https://github.com/mahmoudzohdi/Lets-Code/tree/project-3)
