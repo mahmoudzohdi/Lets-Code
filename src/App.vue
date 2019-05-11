@@ -1,16 +1,14 @@
 <template>
-  <div id="app">
-    <app-header></app-header>
+  <div id="app"> 
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import AppHeader from './components/app-header'
+
 export default {
   name: 'app',
-  components: {
-    AppHeader
-  }
+  
 }
 </script>
 
@@ -19,6 +17,11 @@ export default {
 body{
   font-family: 'Lato', sans-serif;
   margin: 0;
+}
+
+
+.text-center{
+  text-align: center;
 }
 
 </style>

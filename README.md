@@ -1,7 +1,4 @@
-# Let's Code - Project 3
-
-you can see Live Preview from [Here](http://mzohdi.com/lets-code/project-3/)
-
+# simple-blog
 
 ## Project setup
 ```
