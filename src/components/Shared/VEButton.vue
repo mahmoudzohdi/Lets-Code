@@ -1,5 +1,5 @@
 <template>
-  <button :type="type" :class="['ve-btn', `ve-btn-${color}`]">
+  <button :type="type" :class="['ve-btn', `ve-btn-${color}`]" @click="$emit('click')">
     <slot></slot>
   </button>
 </template>

@@ -4,7 +4,7 @@
       <slot name="title"></slot>
     </h3>
     <div class="actions">
-      <ve-button type="button" color="success" @click="addMethod">
+      <ve-button type="button" color="success" @click="fireAddModalEvent">
         Add
       </ve-button>
     </div>
@@ -15,6 +15,11 @@
 
 export default {
   props: ['addMethod'],
+  methods: {
+    fireAddModalEvent(){
+      this.$emit('addModalEvent');
+    }
+  }
 }
 </script>
 
