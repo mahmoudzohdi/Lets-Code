@@ -1,15 +1,11 @@
 <template>
   <div>
     <section-header :add-method="showModalHandler" @addModalEvent="showModalHandler">
-      <template #title>
-        there is title here
-      </template>
+      <template #title>there is title here</template>
     </section-header>
 
-    <ve-modal :show="showModal" :width="800">
-      <ve-button @click="hideModalHandler">
-        close modal
-      </ve-button>
+    <ve-modal :show="showModal" @close="hideModalHandler" :width="800">
+      <category-form @cancelForm="hideModalHandler"></category-form>
     </ve-modal>
   </div>
 </template>
@@ -20,15 +16,17 @@
 
 
 <script>
-import SectionHeader from "@/components/Admin/SectionHeader.vue"
+import CategoryForm from "./CategoryForm";
+import SectionHeader from "@/components/Admin/SectionHeader.vue";
 export default {
   components: {
-    SectionHeader
+    SectionHeader,
+    CategoryForm
   },
   data() {
     return {
       showModal: false
-    }
+    };
   },
   methods: {
     showModalHandler() {
@@ -36,11 +34,10 @@ export default {
     },
     hideModalHandler() {
       this.showModal = false;
-    },
+    }
   }
-}
+};
 </script>
 
 <style>
-
 </style>

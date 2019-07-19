@@ -1,18 +1,16 @@
 <template>
   <transition name="fade">
-    
-    <div class="modal-container" v-if="show">
+    <div class="modal-container" v-if="show" @click.self="$emit('close')">
       <div class="modal-content" :style="{'max-width': width+'px'}">
         <slot></slot>
       </div>
     </div>
-
   </transition>
 </template>
 
 <script>
 export default {
-  name: 've-modal',
+  name: "ve-modal",
   props: {
     show: {
       type: Boolean,
@@ -23,15 +21,13 @@ export default {
       type: Number,
       default: 500,
       required: false
-
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
-
-.modal-container{
+.modal-container {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -40,17 +36,16 @@ export default {
   z-index: 50;
   padding: 10px;
   box-sizing: border-box;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   &.fade-enter,
-  &.fade-leave-to{
+  &.fade-leave-to {
     opacity: 0;
-
   }
   &.fade-enter-active,
-  &.fade-leave-active{
+  &.fade-leave-active {
     transition: opacity 0.25s;
   }
-  .modal-content{
+  .modal-content {
     width: 100%;
     margin: 20px auto;
     background-color: #fff;
@@ -59,5 +54,4 @@ export default {
     box-sizing: border-box;
   }
 }
-
 </style>
