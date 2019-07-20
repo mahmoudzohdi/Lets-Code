@@ -1,30 +1,22 @@
 <template>
   <header class="admin-header">
     <button type="button" class="nav-toggle-button" @click="toggleNav">
-      
       <span class="icon">
         <span class="line line-1"></span>
         <span class="line line-2"></span>
         <span class="line line-3"></span>
       </span>
-
     </button>
     <nav>
       <ul>
         <li :class="{'active': $route.name == 'admin'}">
-          <router-link to="/admin">
-            Home
-          </router-link>
+          <router-link to="/admin">Home</router-link>
         </li>
         <li :class="{'active': $route.name == 'products'}">
-          <router-link to="/admin/products">
-            Products
-          </router-link>
+          <router-link to="/admin/products">Products</router-link>
         </li>
         <li :class="{'active': $route.name == 'categories'}">
-          <router-link to="/admin/categories">
-            Categories
-          </router-link>
+          <router-link to="/admin/categories">Categories</router-link>
         </li>
       </ul>
     </nav>
@@ -34,8 +26,7 @@
 <script>
 export default {
   data() {
-    return {
-    }
+    return {};
   },
   computed: {
     navVisibility() {
@@ -44,25 +35,24 @@ export default {
   },
   methods: {
     toggleNav() {
-      this.$store.commit("updateNavVisibility", !this.navVisibility)
+      this.$store.commit("admin/updateNavVisibility", !this.navVisibility);
     }
   }
-}
+};
 </script>
 
 <style lang="scss">
-
 $adminHeaderWidth: 200px;
 
-#admin-content-body{
+#admin-content-body {
   transition: padding-left 0.5s;
   padding: 50px 20px 0;
-  &.nav-opened{
+  &.nav-opened {
     padding-left: $adminHeaderWidth + 20px;
   }
 }
 
-.admin-header{
+.admin-header {
   width: $adminHeaderWidth;
   position: fixed;
   top: 0;
@@ -71,7 +61,7 @@ $adminHeaderWidth: 200px;
   bottom: 0;
   background-color: #333;
   color: #fff;
-  .nav-toggle-button{
+  .nav-toggle-button {
     position: absolute;
     left: 100%;
     width: 40px;
@@ -82,57 +72,57 @@ $adminHeaderWidth: 200px;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    &:focus{
+    &:focus {
       outline: none;
     }
-    .icon{
+    .icon {
       position: relative;
       display: block;
       width: 100%;
-      .line{
+      .line {
         position: absolute;
         width: 100%;
         display: block;
         height: 3px;
         background-color: #fff;
         transition: 0.5s;
-        &.line-1{
+        &.line-1 {
           transform: translateY(-8px);
         }
-        &.line-3{
+        &.line-3 {
           transform: translateY(8px);
         }
-        .nav-opened &{
+        .nav-opened & {
           transform-origin: center;
-          &.line-2{
+          &.line-2 {
             opacity: 0;
           }
-          &.line-1{
+          &.line-1 {
             transform: translateY(0) rotate(45deg);
           }
-          &.line-3{
+          &.line-3 {
             transform: translateY(0) rotate(-45deg);
           }
         }
       }
     }
   }
-  .nav-opened &{
+  .nav-opened & {
     left: 0;
   }
-  nav{
+  nav {
   }
-  ul{
+  ul {
     padding: 0;
     margin: 0;
     list-style: none;
     li {
       font-size: 16px;
       &:hover,
-      &.active{
+      &.active {
         background-color: #000;
       }
-      a{
+      a {
         display: block;
         color: inherit;
         padding: 15px 20px;
@@ -141,6 +131,4 @@ $adminHeaderWidth: 200px;
     }
   }
 }
-
-
 </style>
