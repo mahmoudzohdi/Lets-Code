@@ -34,9 +34,9 @@
 
 
 <script>
-import CategoryForm from "./CategoryForm";
-import DeleteModal from "./DeleteModal";
-import CategoryCard from "./CategoryCard";
+import CategoryForm from "@/components/Admin/Categories/CategoryForm";
+import DeleteModal from "@/components/Admin/Categories/DeleteModal";
+import CategoryCard from "@/components/Admin/Categories/CategoryCard";
 import SectionHeader from "@/components/Admin/SectionHeader.vue";
 export default {
   components: {
