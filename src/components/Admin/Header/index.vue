@@ -30,12 +30,12 @@ export default {
   },
   computed: {
     navVisibility() {
-      return this.$store.state.admin.navVisibility;
+      return this.$store.state.AdminStore.navVisibility;
     }
   },
   methods: {
     toggleNav() {
-      this.$store.commit("admin/updateNavVisibility", !this.navVisibility);
+      this.$store.commit("AdminStore/updateNavVisibility", !this.navVisibility);
     }
   }
 };

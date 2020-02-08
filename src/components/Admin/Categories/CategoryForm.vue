@@ -33,7 +33,7 @@ export default {
     submit() {
       this.loading = true;
       this.$store
-        .dispatch("admin/submitCategoryForm", {
+        .dispatch("AdminStore/submitCategoryForm", {
           name: this.categoryName
         })
         .then(() => {

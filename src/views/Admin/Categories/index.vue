@@ -1,7 +1,7 @@
 <template>
   <div>
-    <section-header :add-method="showModalHandler" @addModalEvent="showModalHandler">
-      <template #title>there is title here</template>
+    <section-header @addModalEvent="showModalHandler">
+      <template #title>Categories List</template>
     </section-header>
 
     <div class="page">
@@ -55,28 +55,28 @@ export default {
   },
   computed: {
     categories() {
-      return this.$store.state.admin.categories;
+      return this.$store.state.AdminStore.categories;
     }
   },
   mounted() {
-    this.$store.dispatch("admin/getCategories");
+    this.$store.dispatch("AdminStore/getCategories");
   },
   methods: {
     showModalHandler() {
       this.showModal = true;
     },
-    showDeleteModalHandler(id) {
-      this.showDeleteModal = true;
-      this.selectedCategoryToDelete = id;
-    },
     hideModalHandler() {
       this.showModal = false;
       this.showDeleteModal = false;
     },
+    showDeleteModalHandler(id) {
+      this.showDeleteModal = true;
+      this.selectedCategoryToDelete = id;
+    },
     deleteCategory() {
       this.deleteLoading = true;
       this.$store
-        .dispatch("admin/deleteCategory", this.selectedCategoryToDelete)
+        .dispatch("AdminStore/deleteCategory", this.selectedCategoryToDelete)
         .then(() => {
           this.hideModalHandler();
           this.selectedCategoryToDelete = null;
