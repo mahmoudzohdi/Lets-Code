@@ -1,5 +1,5 @@
 <template>
-  <div :class="[`size-${size}`, 'lds-ring', `color-${color}`]">
+  <div :class="[`size-${size}`, 'lds-ring', `color-${color}`, `position-${position}`]">
     <div></div>
     <div></div>
     <div></div>
@@ -28,12 +28,23 @@ export default {
         // The value must match one of these strings
         return ["default", "white"].indexOf(value) !== -1;
       }
+    },
+    position: {
+      type: String,
+      default: ' '
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
+.position- {
+  &center{
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 100px;
+  }
+}
 .lds-ring {
   display: inline-block;
   position: relative;

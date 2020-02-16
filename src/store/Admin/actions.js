@@ -15,7 +15,7 @@ export default {
     });
   },
   getCategories({ commit }) {
-    getCollection(CATEGORIES).then(querySnapshot => {
+    return getCollection(CATEGORIES).then(querySnapshot => {
       let categories = querySnapshot.docs.map(doc =>
         Object.assign({}, doc.data(), {
           id: doc.id

@@ -1,0 +1,33 @@
+$cols: 12;
+$sizes: (("xs", 0), ("sm", 776px), ("md", 991px), ("lg", 1366px));
+
+.container{
+  max-width: 1366px;
+  margin: auto;
+  padding: 0 30px;
+}
+
+.row{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+@mixin colWidth($width){
+  width: $width;
+  max-width: $width;
+  flex: $width;
+}
+
+@each $size, $minWidth in $sizes {
+  @media(min-width: $minWidth) {
+    @for $col from 1 through $cols {
+      .col-#{$size}-#{$col} {
+        @include colWidth((($col / $cols) * 100) + 0%);
+        padding-right: 15px;
+        padding-left: 15px;
+      }
+    }
+  }
+} 

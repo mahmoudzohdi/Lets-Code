@@ -19,7 +19,7 @@ export default {
     });
   },
   getProducts({ commit }) {
-    getCollection(PRODUCTS).then(querySnapshot => {
+    return getCollection(PRODUCTS).then(querySnapshot => {
       let products = querySnapshot.docs.map(doc =>
         Object.assign({}, doc.data(), {
           id: doc.id

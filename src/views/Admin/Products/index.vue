@@ -3,13 +3,14 @@
     <section-header @addModalEvent="showModalHandler">
       <template #title>Products List</template>
     </section-header>
-
-    <ul>
-      <li v-for="product in products" :key="product.id">
-        <img :src="product.imageUrl" :alt="product.name" width="300" />
-        {{ product.name }}: {{ product.price }}
-      </li>
-    </ul>
+    <div class="container">
+      <ve-loader class="page-loader" position="center" v-if="loading"></ve-loader>
+      <div class="row" v-else>
+        <div class="col-md-4 col-sm-6 col-xs-12 " v-for="product in products" :key="product.id">
+          <product-card :data="product"></product-card>
+        </div>
+      </div>
+    </div>
     <ve-modal :show="showModal" @close="hideModalHandler" :width="800">
       <product-form @cancelForm="hideModalHandler"></product-form>
     </ve-modal>
@@ -24,20 +25,23 @@
 
 <script>
 import DeleteModal from "@/components/Admin/Categories/DeleteModal";
+import ProductCard from "@/components/Shared/Products/Card";
 import SectionHeader from "@/components/Admin/SectionHeader.vue";
 import ProductForm from "@/components/Admin/Products/ProductForm.vue";
 export default {
   components: {
     DeleteModal,
     SectionHeader,
-    ProductForm
+    ProductForm,
+    ProductCard
   },
   data() {
     return {
       showModal: false,
       showDeleteModal: false,
       selectedProductToDelete: null,
-      deleteLoading: false
+      deleteLoading: false,
+      loading: false
     };
   },
   computed: {
@@ -65,7 +69,10 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch("AdminStore/ProductsModule/getProducts");
+    this.loading = true;
+    this.$store.dispatch("AdminStore/ProductsModule/getProducts").finally( () => {
+      this.loading = false;
+    });
   }
 };
 </script>

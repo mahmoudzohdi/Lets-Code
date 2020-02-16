@@ -5,15 +5,19 @@
     </section-header>
 
     <div class="page">
-      <div class="categories-container" v-if="categories">
-        <category-card
-          v-for="category in categories"
-          :category="category"
-          @deleteCategory="showDeleteModalHandler"
-          :key="category.id"
-        ></category-card>
+      <ve-loader class="page-loader" position="center" v-if="loading"></ve-loader>
+      <div class="container" v-else>
+        <div class="row">
+          <div class="col-md-4 col-sm-6 col-xs-12 ">
+            <category-card
+              v-for="category in categories"
+              :category="category"
+              @deleteCategory="showDeleteModalHandler"
+              :key="category.id"
+            ></category-card>
+          </div>
+        </div>
       </div>
-      <ve-loader class="page-loader" v-else></ve-loader>
     </div>
 
     <ve-modal :show="showModal" @close="hideModalHandler" :width="800">
@@ -50,7 +54,8 @@ export default {
       showModal: false,
       showDeleteModal: false,
       selectedCategoryToDelete: null,
-      deleteLoading: false
+      deleteLoading: false,
+      loading: false
     };
   },
   computed: {
@@ -59,7 +64,10 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch("AdminStore/getCategories");
+    this.loading = true;
+    this.$store.dispatch("AdminStore/getCategories").finally( () => {
+      this.loading = false;
+    });
   },
   methods: {
     showModalHandler() {
@@ -88,13 +96,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.categories-container {
-  display: flex;
-  flex-wrap: wrap;
-}
-.page-loader {
-  left: 50%;
-  transform: translateX(-50%);
-  margin-top: 100px;
-}
+
 </style>
