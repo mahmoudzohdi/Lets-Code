@@ -1,7 +1,8 @@
 import {
   addToCollection,
   getCollection,
-  deleteFromCollection
+  deleteFromCollection,
+  updateDocumnet
 } from "@/firebase/methods/firestore.js";
 import { uploadToStorage } from "@/firebase/methods/storage.js";
 import { PRODUCTS } from "@/firebase/const/firestore.js";
@@ -18,6 +19,24 @@ export default {
       });
     });
   },
+  submitEditProductForm({ commit, state }, { product, id, imageFile }) {
+    const uploadImage = imageFile ? uploadToStorage(imageFile) : Promise.resolve(null);
+    return uploadImage.then(imageUrl => {
+      const productObj = { ...product };
+      if(imageUrl) productObj['imageUrl'] = imageUrl;
+      return updateDocumnet(PRODUCTS, id, productObj).then(doc => {
+        commit(
+          "updateProducts",
+          state.products.map( product => {
+            if(product.id == id){
+              return Object.assign({}, product, productObj)
+            }
+            return product;
+          })
+        );
+      });
+    });
+  },
   getProducts({ commit }) {
     return getCollection(PRODUCTS).then(querySnapshot => {
       let products = querySnapshot.docs.map(doc =>
@@ -28,11 +47,11 @@ export default {
       commit("updateProducts", products);
     });
   },
-  deleteProduct({ commit, state }, categoryId) {
-    return deleteFromCollection(PRODUCTS, categoryId).then(() => {
+  deleteProduct({ commit, state }, productId) {
+    return deleteFromCollection(PRODUCTS, productId).then(() => {
       commit(
         "updateProducts",
-        state.products.filter(category => category.id != categoryId)
+        state.products.filter(product => product.id != productId)
       );
     });
   }

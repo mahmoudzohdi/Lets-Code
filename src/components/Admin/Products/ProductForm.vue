@@ -10,6 +10,9 @@
     </label>
     <label class="form-input-holder">
       <span class="input-title">Image:</span>
+      <div class="preview-image">
+        <img :src="imageUrl">
+      </div>
       <input type="file" @change="imageInputChangeHandler" accept="image/*" class="form-input" />
     </label>
     <div class="form-footer">
@@ -31,13 +34,25 @@ const initForm = () => ({
   price: null
 });
 export default {
+  props: ['product'],
   data() {
     return {
       imageFile: null,
-      imagePreview: null,
+      imageUrl: null,
       form: initForm(),
-      loading: false
+      loading: false,
+      reader: new FileReader()
     };
+  },
+  created(){
+    this.reader.onload = () => {
+      this.imageUrl = this.reader.result;
+    };
+  },
+  computed: {
+    isEditMode(){
+      return !!this.product;
+    }
   },
   methods: {
     cancel() {
@@ -46,15 +61,27 @@ export default {
     },
     imageInputChangeHandler(e) {
       this.imageFile = e.target.files[0];
+      this.reader.readAsDataURL(this.imageFile);
     },
-    submit() {
-      this.loading = true;
-      this.$store
+    editProduct(){
+      return this.$store
+        .dispatch("AdminStore/ProductsModule/submitEditProductForm", {
+          product: this.form,
+          imageFile: this.imageFile,
+          id: this.product.id
+        })
+    },
+    addProduct(){
+      return this.$store
         .dispatch("AdminStore/ProductsModule/submitProductForm", {
           product: this.form,
           imageFile: this.imageFile
         })
-        .then(() => {
+    },
+    submit() {
+      this.loading = true;
+      const callMethod = this.isEditMode ? 'editProduct' : 'addProduct';
+      this[callMethod]().then(() => {
           this.resetForm();
           this.$emit("cancelForm");
           this.loading = false;
@@ -62,7 +89,24 @@ export default {
     },
     resetForm() {
       this.form = initForm();
+      this.imageUrl = null;
+    },
+    fillFormData(){
+      const {name, price, imageUrl} = this.product;
+      this.form = {name, price};
+      this.imageUrl = imageUrl;
     }
+  },
+  mounted(){
+    this.isEditMode && this.fillFormData()
   }
 };
 </script>
+<style lang="scss" scoped>
+.preview-image{
+  max-width: 150px;
+  img{
+    width: 100%;
+  }
+}
+</style>

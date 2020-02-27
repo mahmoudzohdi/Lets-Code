@@ -1,5 +1,6 @@
 import {
   addToCollection,
+  updateDocumnet,
   getCollection,
   deleteFromCollection
 } from "@/firebase/methods/firestore.js";
@@ -11,6 +12,19 @@ export default {
       commit(
         "updateCategories",
         state.categories.concat(Object.assign({}, category, { id: doc.id }))
+      );
+    });
+  },
+  submitEditCategoryForm({ commit, state }, {category, id}) {
+    return updateDocumnet(CATEGORIES, id, category).then(doc => {
+      commit(
+        "updateCategories",
+        state.categories.map( cat => {
+          if(cat.id == id){
+            return Object.assign({}, cat, category)
+          }
+          return cat;
+        })
       );
     });
   },

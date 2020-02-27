@@ -19,29 +19,52 @@
 
 <script>
 export default {
+  props: ['selectedCategory'],
   data() {
     return {
       categoryName: null,
       loading: false
     };
   },
+  computed: {
+    isEditMode(){
+      return !!this.selectedCategory;
+    }
+  },
   methods: {
     cancel() {
       this.categoryName = null;
       this.$emit("cancelForm");
     },
-    submit() {
-      this.loading = true;
-      this.$store
+    addCategory(){
+      return this.$store
         .dispatch("AdminStore/submitCategoryForm", {
           name: this.categoryName
+        });
+    },
+    editCategory(){
+      return this.$store
+        .dispatch("AdminStore/submitEditCategoryForm", {
+          category: { name: this.categoryName },
+          id: this.selectedCategory.id
         })
-        .then(() => {
+    },
+    submit() {
+      this.loading = true;
+      const callMethod = this.isEditMode ? 'editCategory' : 'addCategory';
+
+        this[callMethod]().then(() => {
           this.categoryName = null;
           this.$emit("cancelForm");
           this.loading = false;
         });
+    },
+    fillFormData(){
+      this.categoryName = this.selectedCategory.name;
     }
+  },
+  mounted(){
+    this.isEditMode && this.fillFormData()
   }
 };
 </script>

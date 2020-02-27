@@ -8,12 +8,11 @@
       <ve-loader class="page-loader" position="center" v-if="loading"></ve-loader>
       <div class="container" v-else>
         <div class="row">
-          <div class="col-md-4 col-sm-6 col-xs-12 ">
+          <div class="col-md-4 col-sm-6 col-xs-12 " v-for="category in categories" :key="category.id">
             <category-card
-              v-for="category in categories"
               :category="category"
               @deleteCategory="showDeleteModalHandler"
-              :key="category.id"
+              @editCategory="showModalHandler"
             ></category-card>
           </div>
         </div>
@@ -21,7 +20,7 @@
     </div>
 
     <ve-modal :show="showModal" @close="hideModalHandler" :width="800">
-      <category-form @cancelForm="hideModalHandler"></category-form>
+      <category-form @cancelForm="hideModalHandler" :selected-category="selectedCategory"></category-form>
     </ve-modal>
     <delete-modal
       :show="showDeleteModal"
@@ -55,7 +54,8 @@ export default {
       showDeleteModal: false,
       selectedCategoryToDelete: null,
       deleteLoading: false,
-      loading: false
+      loading: false,
+      selectedCategory: null,
     };
   },
   computed: {
@@ -70,8 +70,9 @@ export default {
     });
   },
   methods: {
-    showModalHandler() {
+    showModalHandler(category) {
       this.showModal = true;
+      this.selectedCategory = category;
     },
     hideModalHandler() {
       this.showModal = false;
